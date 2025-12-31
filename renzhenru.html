@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>任真如 | 人力资源数字化转型专家</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff8c42;    /* 核心浅橙色 */
+            --primary-light: #fff3e0;   /* 浅橙背景色 */
+            --text-main: #2d3436;       /* 深灰文字 */
+            --text-sub: #636e72;        /* 辅助文字 */
+            --bg-white: #ffffff;
+            --bg-light: #f9f9f9;        /* 简约背景 */
+            --border-soft: #f1f2f6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: var(--bg-white);
+            color: var(--text-main);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
+
+        header { 
+            padding: 1.5rem 0; 
+            background: rgba(255, 255, 255, 0.9); 
+            backdrop-filter: blur(5px); 
+            position: sticky; top: 0; z-index: 100;
+            border-bottom: 1px solid var(--border-soft);
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.2rem; font-weight: 700; color: var(--text-main); letter-spacing: 1px; }
+        .nav-links a { color: var(--text-sub); text-decoration: none; margin-left: 1.5rem; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary-color); }
+
+        /* Hero 区域 */
+        .hero { padding: 6rem 0 4rem; }
+        .hero-flex { display: flex; align-items: center; justify-content: space-between; gap: 3rem; }
+        .hero-text { flex: 1; }
+        .hero-text h1 { font-size: 2.8rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem; }
+        .hero-text .name { color: var(--primary-color); }
+        .hero-text .title { font-size: 1.4rem; color: var(--text-sub); font-weight: 400; margin-bottom: 1.5rem; display: block; }
+        .hero-text p { font-size: 1.05rem; color: var(--text-sub); margin-bottom: 1rem; }
+
+        /* 照片样式 */
+        .hero-image { flex-shrink: 0; position: relative; }
+        .photo-wrapper {
+            width: 280px; height: 280px;
+            border-radius: 50%;
+            padding: 8px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            box-shadow: 0 20px 40px rgba(255, 140, 66, 0.15);
+        }
+        .photo-wrapper img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #fff;
+        }
+
+        .hero-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+        .hero-tag {
+            padding: 0.4rem 1rem; border: 1px solid var(--primary-color); 
+            color: var(--primary-color); border-radius: 20px; font-size: 0.8rem;
+        }
+
+        /* Section 通用 */
+        section { padding: 5rem 0; }
+        .section-title { 
+            font-size: 1.8rem; margin-bottom: 3rem; text-align: center; 
+            position: relative; padding-bottom: 1rem;
+        }
+        .section-title::after {
+            content: ""; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 40px; height: 3px; background: var(--primary-color);
+        }
+
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .card {
+            background: var(--bg-white); padding: 2rem; border-radius: 12px;
+            border: 1px solid var(--border-soft); transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); border-color: var(--primary-color); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .card .label { font-size: 0.75rem; color: var(--primary-color); font-weight: 700; margin-bottom: 0.5rem; display: block; }
+        .card h3 { margin-bottom: 0.8rem; font-size: 1.1rem; color: var(--text-main); }
+        .card p { font-size: 0.9rem; color: var(--text-sub); }
+
+        /* 时间轴 */
+        .timeline { max-width: 850px; margin: 0 auto; }
+        .timeline-item { position: relative; padding-left: 2rem; border-left: 1px solid var(--border-soft); padding-bottom: 3.5rem; }
+        .timeline-item::before {
+            content: ""; position: absolute; left: -5px; top: 8px;
+            width: 9px; height: 9px; border-radius: 50%; background: var(--primary-color);
+        }
+        .timeline-date { font-size: 0.85rem; color: var(--primary-color); font-weight: 600; margin-bottom: 0.5rem; display: block; }
+        .timeline-company { font-size: 1.05rem; color: var(--text-main); font-weight: 600; margin-bottom: 0.8rem; display: block; }
+        .timeline-details { list-style: none; font-size: 0.9rem; color: var(--text-sub); }
+        .timeline-details li { margin-bottom: 0.6rem; position: relative; padding-left: 1.2rem; }
+        .timeline-details li::before { content: "▹"; position: absolute; left: 0; color: var(--primary-color); }
+
+        footer { text-align: center; padding: 4rem 0; background: var(--bg-light); color: var(--text-sub); font-size: 0.85rem; }
+
+        @media (max-width: 850px) {
+            .hero-flex { flex-direction: column-reverse; text-align: center; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .hero-tags { justify-content: center; }
+            .photo-wrapper { width: 220px; height: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">REN ZHENRU</div>
+                <div class="nav-links">
+                    <a href="#about">关于</a>
+                    <a href="#publications">研究成果</a>
+                    <a href="#experience">职业历程</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero" id="about">
+            <div class="hero-flex">
+                <div class="hero-text">
+                    <h1>你好，我是 <span class="name">任真如</span></h1>
+                    <span class="title">人力资源数字化转型专家</span>
+                    <p>北京大学本科、悉尼大学硕士。深耕数字化咨询领域7年，曾任职于用友、普华永道及字节跳动。</p>
+                    <p><b>专注于AI+组织人才发展方案设计，为一级央企及大型组织提供从战略咨询到系统落地的全链路人力资源数字化转型方案。</b></p>
+                    <div class="hero-tags">
+                        <span class="hero-tag">中关村人才协会专家委员</span>
+                        <span class="hero-tag">PMP 项目管理认证</span>
+                        <span class="hero-tag">PowerBI 数据分析认证</span>
+                        <span class="hero-tag">中级人力资源管理师</span>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <div class="photo-wrapper">
+                        <img src="https://raw.githubusercontent.com/Zhenru1229/My-imaga/refs/heads/main/%E8%81%8C%E4%B8%9A%E7%85%A7.jpg" alt="任真如职业照">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="publications">
+            <h2 class="section-title">主要研究成果</h2>
+            <div class="grid-layout">
+                <div class="card">
+                    <span class="label">WHITEPAPER</span>
+                    <h3>《AI+企业人才发展白皮书》</h3>
+                    <p>深度洞察央企及大型组织在 AI 浪潮下的人才管理转型趋势，助力组织智能化升级。</p>
+                </div>
+                <div class="card">
+                    <span class="label">RESEARCH</span>
+                    <h3>《绩效认知升级》课程开发</h3>
+                    <p>基于多年实战咨询经验，系统化梳理数智化时代下绩效管理的机制重构与认知迭代。</p>
+                </div>
+                <div class="card">
+                    <span class="label">PUBLICATION</span>
+                    <h3>《中国移动新型智慧城市白皮书》</h3>
+                    <p>参与2023版“国企数字化分册”编写，界定国企人力资源管理数字化的关键成功路径。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2 class="section-title">职业历程</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-date">2023.07 - 至今</span>
+                    <span class="timeline-company">用友网络科技股份有限公司 | 方案咨询高级顾问</span>
+                    <ul class="timeline-details">
+                        <li><b>央企转型：</b>深耕一级央企，在组织、绩效、人才发展等领域主导数字化落地设计。</li>
+                        <li><b>售前攻坚：</b>跨部门协调产研、技术、销售，推动多个央企项目签约。</li>
+                        <li><b>内容运营：</b>提炼产品核心价值，有效赋能项目转化。</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-date">2021.03 - 2023.07</span>
+                    <span class="timeline-company">普华永道商务咨询 (上海) | 人力数字化转型咨询顾问</span>
+                    <ul class="timeline-details">
+                        <li>数字化咨询：服务大型央企、外企、高校的人力资源数字化建设，负责需求调研与分析、业务流程优化、系统蓝图设计、原型设计/详细功能设计等工作。</li>
+                        <li>系统建设：主导 SuccessFactors 员工中心、绩效等模块的项目建设，推动组织管理制度的数字化落地。</li>
+                        <li>行业洞察：参与《普华永道-国企人力资源数字化转型之道》白皮书撰写。</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-date">2019.08 - 2020.07</span>
+                    <span class="timeline-company">字节跳动 | HRBP</span>
+                    <ul class="timeline-details">
+                        <li>负责招聘全流程交付、人才 Mapping 及数据分析，高效支持业务快速扩张。</li>
+                        <li>主导绩效项目流程管理与员工培训，优化组织激励机制。</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">教育背景</span>
+                    <div style="margin-bottom: 1rem;">
+                        <span class="timeline-company">悉尼大学 (The University of Sydney) | 硕士</span>
+                        <ul class="timeline-details">
+                            <li>专业：Media Practice | 2018- 2019 </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span class="timeline-company">北京大学 (Peking University) | 本科</span>
+                        <ul class="timeline-details">
+                            <li>专业：编辑出版学 | 2013 - 2017 </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 任真如 | 数字化转型专家 | 中国上市公司协会培训讲师</p>
+            <p style="margin-top: 0.5rem;">联系方式: renzhenrupku@163.com | 156-5071-7352</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+```
